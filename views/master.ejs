@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="http://localhost:3000"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+        var socket = io("http://localhost:3000");
+        socket.on("btc", (data)=>{
+            var num1= data-42000.0;
+            var num2=  (num1/42000.0)*100;
+            $("#perBTC").html(num2.toFixed(2));
+
+            $("#btc").html(data);
+        });
+        var socket = io("http://localhost:3000");
+        socket.on("ada", (data)=>{
+            var num1= data-1.0;
+            var num2=  (num1/1.0)*100;
+            $("#perADA").html(num2.toFixed(2));
+            $("title").html(data);
+            $("#ada").html(data);
+        });
+        var count=0;
+        var a1=0;
+        var a2=0;
+        socket.on("matic", (data)=>{
+            var num1= data-1.12;
+            var num2=  (num1/1.12)*100;
+            $("#perMATIC").html(num2.toFixed(2));
+            $("#matic").html(data);
+            //$("title").html(data);
+            count++;
+            if(count==1){
+                a1=data;
+            } 
+
+
+            if(count==2){
+                a2=data;
+                count=0;
+            } 
+            var sum=a2-a1;
+            if(sum>0){
+                $(".color").css("color","green");
+            }
+            else{
+                $(".color").css("color","red");
+            }
+            
+            
+           
+        });
+        socket.on("sol", (data)=>{
+            $("#sol").html(data);
+        });
+
+        socket.on("axs", (data)=>{
+            $("#axs").html(data);
+        });
+
+        socket.on("c98", (data)=>{
+            $("#c98").html(data);
+        });
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <!-- <div>
+        <h2>Binance Trading</h2>
+    </div>
+    <table style="border: 1px solid black; font-family:Arial, Helvetica, sans-serif; font-size:xx-large; padding-block: 2px;">
+
+        <tr>
+            <td>BTC</td>
+            <td id="btc" style="font-size: 15rem;"></td>
+            <td><span id="perBTC"></span>%</td>
+        </tr>
+
+        <tr >
+            <td>MATIC</td>
+            <td id="matic" class="color" style="font-size: 15rem;"></td>
+            <td ><span class="color" id="perMATIC" ></span>%</td>
+        </tr>
+    </table> -->
+    
+</body>
+</html>
