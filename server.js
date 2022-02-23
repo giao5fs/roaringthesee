@@ -6,7 +6,11 @@ app.set("view engine", "ejs"); //because of having web
 app.set("views","./views"); //layout folder
 app.use(express.static("public")); //static patch for Jquery, CSS
 var server = require("http").Server(app); //config server which attach socket io
-var io = require("socket.io")(server);
+var io = require("socket.io")(server, {
+	cors:{
+		origin: '*',
+	}
+});
 app.io = io;
 server.listen(3000);
 

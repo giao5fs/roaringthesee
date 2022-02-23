@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="http://13.229.126.93:3000"/>
+    <base href="http://3.0.57.34:3000"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./socket.io/socket.io.js"></script>
     <script>
-        var socket = io("http://13.229.126.93:3000");
+        var socket = io("http://3.0.57.34:3000");
         socket.on("btc", (data)=>{
             var num1= data-42000.0;
             var num2=  (num1/42000.0)*100;
@@ -16,7 +16,7 @@
 
             $("#btc").html(data);
         });
-        var socket = io("http://13.229.126.93:3000");
+        var socket = io("http://3.0.57.34:3000");
         socket.on("ada", (data)=>{
             var num1= data-1.0;
             var num2=  (num1/1.0)*100;
